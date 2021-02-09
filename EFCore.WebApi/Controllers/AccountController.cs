@@ -20,22 +20,43 @@ namespace EFCore.WebApi.Controllers
             _context = context;
         }
 
+
         // GET: api/Account
-        public IEnumerable<string> Get()
+        public ActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"ERRO: {ex}");
+            }
         }
 
         // GET: api/Account/5 
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            return Ok();
         }
 
         // POST: api/Account
-        public void Post([FromBody] string value)
+        public ActionResult Post(Account value)
         {
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"ERRO: {ex}");
+            }
         }
+
 
         // PUT: api/Account/5
         public void Put(int id, [FromBody] string value)
