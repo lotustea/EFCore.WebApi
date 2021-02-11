@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EFCore.WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PersonController : ControllerBase
     {
 
@@ -19,12 +19,22 @@ namespace EFCore.WebApi.Controllers
         {
             _context = context;
         }
-
         // GET: api/Person
+        [HttpGet]
         public ActionResult Get()
         {
             try
             {
+                var person = new Person
+                {
+                    Nome = "Luís Gustavo Peixoto Júnior",
+                    BirthDate = new DateTime(1997, 6, 15),
+                    IdDocument = "6118449121"
+                };
+
+                _context.Persons.Add(person);
+                _context.SaveChanges();
+
                 return Ok();
 
             }
@@ -36,12 +46,14 @@ namespace EFCore.WebApi.Controllers
         }
 
         // GET: api/Person/5 
+        [HttpGet("{id}", Name = "Get")]
         public ActionResult Get(int id)
         {
             return Ok();
         }
 
         // POST: api/Person
+        [HttpPost]
         public ActionResult Post(Person value)
         {
             try
@@ -50,20 +62,42 @@ namespace EFCore.WebApi.Controllers
 
             }
             catch (Exception ex)
-            { 
+            {
 
                 return BadRequest($"ERRO: {ex}");
             }
         }
 
         // PUT: api/Person/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, [FromBody]string value)
         {
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"ERRO: {ex}");
+            }
         }
 
         // DELETE: api/Person/5
-        public void Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"ERRO: {ex}");
+            }
         }
     }
 }

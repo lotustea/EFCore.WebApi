@@ -9,7 +9,7 @@ namespace EFCore.WebApi
         public string Nome { get; set; }
         public DateTime BirthDate { get; set; }
         public string IdDocument { get; set; }
-        public List<Account> Accounts { get; set; }
+        //public List<Account> Accounts { get; set; }
 
     }
 }

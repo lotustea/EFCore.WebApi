@@ -12,7 +12,7 @@ namespace EFCore.WebApi
         public int SenderAccountId { get; set; }
         public DateTime TransferDate { get; set; }
         public decimal Amount { get; set; }
-        public List<Account> Accounts { get; set; }
+        //public List<Account> Accounts { get; set; }
 
     }
 }
